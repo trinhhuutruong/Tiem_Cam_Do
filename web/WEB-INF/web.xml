@@ -52,6 +52,10 @@
         <servlet-name>UpdateItemController</servlet-name>
         <servlet-class>servlet.UpdateItemController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateItems</servlet-name>
+        <servlet-class>servlet.CreateItems</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>UpdateItemController</servlet-name>
         <url-pattern>/UpdateItemController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateItems</servlet-name>
+        <url-pattern>/CreateItems</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
