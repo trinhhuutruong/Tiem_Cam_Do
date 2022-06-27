@@ -7,7 +7,6 @@
 <%@page import="dao.BillDAO"%>
 <%@page import="dao.ItemDAO"%>
 <%@page import="dao.CustomerDAO"%>
-<%@page import="dto.General"%>
 <%@page import="dto.CustomerDTO"%>
 <%@page import="dto.ItemDTO"%>
 <%@page import="java.util.ArrayList"%>
