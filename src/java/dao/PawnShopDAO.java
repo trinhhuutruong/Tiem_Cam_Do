@@ -26,12 +26,12 @@ public class PawnShopDAO {
     private final String UPDATE = "UPDATE tblPawnShop set storeName = ?, storeAddress = ?, phoneNumber = ?, managerID = ?  WHERE storeID = ?;";
     private final String DELETE = "DELETE FROM tblPawnShop WHERE storeID = ? ";
 
-    public boolean createPawnShop(String storeID, String storeName, String storeAddress, int phoneNumber, String managerID, String confirmKey) throws SQLException, ClassNotFoundException {
+    public boolean createPawnShop(int storeID, String storeName, String storeAddress, int phoneNumber, String managerID, String confirmKey) throws SQLException, ClassNotFoundException {
         try {
             con = DBConnect.makeConnection();
             if (con != null) {
                 stm = con.prepareStatement(CREATE);
-                stm.setString(1, storeID);
+                stm.setInt(1, storeID);
                 stm.setString(2, storeName);
                 stm.setString(3, storeAddress);
                 stm.setInt(4, phoneNumber);
@@ -52,12 +52,12 @@ public class PawnShopDAO {
         return false;
     }
 
-    public PawnShopDTO viewPawnShop(String id) throws SQLException, ClassNotFoundException {
+    public PawnShopDTO viewPawnShop(int id) throws SQLException, ClassNotFoundException {
         try {
             con = DBConnect.makeConnection();
             if (con != null) {
                 stm = con.prepareStatement(VIEW);
-                stm.setString(1, id);
+                stm.setInt(1, id);
                 rs = stm.executeQuery();
                 if (rs.next()) {
                     String storeName=rs.getString("storeName");
@@ -84,7 +84,7 @@ public class PawnShopDAO {
         return null;
     }
 
-    public boolean updatePawnShop(String storeID, String storeName, String storeAddress, int phoneNumber, String managerID) throws SQLException, ClassNotFoundException {
+    public boolean updatePawnShop(int storeID, String storeName, String storeAddress, int phoneNumber, String managerID) throws SQLException, ClassNotFoundException {
         try {
             con = DBConnect.makeConnection();
             if (con != null) {
@@ -93,7 +93,7 @@ public class PawnShopDAO {
                 stm.setString(2, storeAddress);
                 stm.setInt(3, phoneNumber);
                 stm.setString(4, managerID);
-                stm.setString(5, storeID);
+                stm.setInt(5, storeID);
                 if (stm.executeUpdate() > 0) {
                     return true;
                 }

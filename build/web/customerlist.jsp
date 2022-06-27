@@ -134,7 +134,7 @@
                                     <div class="table-responsive">
                                         <%
                                             CustomerDAO dao = new CustomerDAO();
-                                            List<CustomerDTO> cusList = dao.viewCustomer();
+                                            List<CustomerDTO> cusList = dao.getAllCus();
                                             if (cusList != null) {
                                         %>
                                         <table class="table table-striped table-bordered zero-configuration">
@@ -154,13 +154,13 @@
                                                 %>
                                             <form action="CustomerController">
                                                 <tr>
-                                                    <td><%= cus.getFullName()%></td>
+                                                    <td><%= cus.getFullname()%></td>
                                                     <td><%= cus.getCustomerID()%></td>
                                                     <td><%= cus.getAddress()%></td>
                                                     <td><%= cus.getPhoneNumber()%></td>
                                                     <td>
                                                         <input type="hidden" name="customerID" value="<%= cus.getCustomerID()%>"/>
-                                                        <input type="hidden" name="fullname" value="<%= cus.getFullName()%>"/>
+                                                        <input type="hidden" name="fullname" value="<%= cus.getFullname()%>"/>
                                                         <input type="hidden" name="address" value="<%= cus.getAddress()%>"/>
                                                         <input type="hidden" name="phoneNumber" value="<%= cus.getPhoneNumber()%>"/>
                                                         <input type="submit" name="action" value="Cập nhật" style="border-radius: 10px;padding: 5px;background-color: #f7f70c"/>
