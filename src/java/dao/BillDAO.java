@@ -232,4 +232,34 @@ public class BillDAO {
         }
         return check;
     }
+    private final String CREATE_ITEM = "INSERT INTO tblItem (itemID,itemName,itemPic,customerID,storeID,itemSendingDate,itemGettingDate,statusID,isKeep) values (?, ?, ?, ?, ?, ?, ?, 1, 0);";
+    public boolean createItem(ItemDTO item) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        try {
+            con = DBConnect.makeConnection();
+            if (con != null) {
+                stm = con.prepareStatement(CREATE_ITEM);
+                stm.setInt(1, item.getItemID());
+                stm.setString(2, item.getItemName());
+                stm.setString(3, item.getItemPic());
+                String itemPic = rs.getString("itemPic");
+                stm.setString(4, item.getCustomerID());
+                stm.setInt(5, item.getStoreID());
+                stm.setDate(6, item.getItemSendingDate());
+                stm.setDate(7, item.getItemGettingDate());
+                stm.setBoolean(8, item.isStatusID());
+                stm.setBoolean(9, item.isIsKeep());
+                check = stm.executeUpdate() > 0 ? true : false;
+            }
+        } finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return check;
+    }
+
 }

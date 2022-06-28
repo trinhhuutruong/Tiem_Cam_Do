@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Tiem_Cam_Do/src/java/dao/AdminDAO.java</file>
+            <file>file:/C:/Users/Admin/Tiem_Cam_Do/src/java/servlet/CreateItems.java</file>
+            <file>file:/C:/Users/Admin/Tiem_Cam_Do/web/createitem.jsp</file>
+            <file>file:/C:/Users/Admin/Tiem_Cam_Do/src/java/dto/BillDTO.java</file>
+            <file>file:/C:/Users/Admin/Tiem_Cam_Do/src/java/dto/ItemDTO.java</file>
+            <file>file:/C:/Users/Admin/Tiem_Cam_Do/src/java/dao/BillDAO.java</file>
+            <file>file:/C:/Users/Admin/Tiem_Cam_Do/src/java/utils/DBConnect.java</file>
+            <file>file:/C:/Users/Admin/Tiem_Cam_Do/src/java/dao/ItemDAO.java</file>
         </group>
     </open-files>
 </project-private>
