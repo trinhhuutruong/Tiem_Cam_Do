@@ -86,7 +86,7 @@
             <ul class="metismenu" id="menu">
                 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
                     <!-- Avatar image in top left corner -->
-                    <img src="https://www.w3schools.com/w3images/avatar_smoke.jpg" style="width:100%">
+                    <img src="images/imagesSWP.jpg" style="width:100%">
 
                     <a href="Bill" class="w3-bar-item w3-button w3-padding-large w3-black">
                         <i class="fa fa-file w3-xxlarge"></i>
@@ -135,7 +135,7 @@
                                 <div class="card-body">
                                     <div id ="header_title_table">
                                         <h4 class="card-title">Thông tin hóa đơn</h4>
-                                        <a herf="customer-update.html"><input id="create_customer" type="submit" name="action" value="Thêm hóa đơn"/></a>
+                                        <a herf="customer-update.html"><input id="create_customer" type="submit" name="action" style="background-color: #00FF00;padding: 10px 20px;" value="Thêm hóa đơn"/></a>
                                     </div>
                                     <div class="table-responsive">
 
@@ -166,7 +166,7 @@
                                                     <td style="text-align: center;padding: 10px 5px;"><%= daoItem.viewItem(b.getItemID()).getItemName()%></td>
                                                     <td style="text-align: center;padding: 10px 5px;"><%= b.getBillBeginDate()%></td>
                                                     <td style="text-align: center;padding: 10px 5px;"><%= b.getNumberDays()%></td>
-                                                    <td style="text-align: center;padding: 10px 5px;"><button><a style="text-decoration: none;padding: 10px;" href="DetailController?action=detail&id=<%= b.getItemID()%>">Chi tiết</a></button></td>
+                                                    <td style="text-align: center;padding: 10px 5px;"><button><a style="padding: 1px;;background-color: #f7f70c" href="DetailController?action=detail&id=<%= b.getItemID()%>">Chi tiết</a></button></td>
                                                 </tr>
                                             
                                             <%}%>

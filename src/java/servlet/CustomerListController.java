@@ -5,7 +5,6 @@
  */
 package servlet;
 
-import dto.ItemDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
-public class ItemListController extends HttpServlet {
-
-    private static final String UPDATE_ITEM = "item_update.jsp";
+public class CustomerListController extends HttpServlet {
+    
+    private static final String UPDATE_CUSTOMER = "customer_update.jsp";
     private static final String ERROR = "wrong.html";
 
     /**
@@ -34,7 +33,6 @@ public class ItemListController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -54,7 +52,7 @@ public class ItemListController extends HttpServlet {
         try {
             String action = request.getParameter("action");
             if ("update".equals(action)) {
-                url = UPDATE_ITEM;
+                url = UPDATE_CUSTOMER;
             }
 
         } finally {
@@ -73,7 +71,7 @@ public class ItemListController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**

@@ -92,7 +92,6 @@
                         <i class="fa fa-user w3-xxlarge"></i>
                         <p>Thông tin khách hàng</p>
                     </a>
-ư
 
                     <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
                         <i class="fa fa-dollar w3-xxlarge"></i>
@@ -144,6 +143,7 @@
                                                     <th>CMND</th>
                                                     <th>Địa chỉ</th>
                                                     <th>Điện thoại</th>
+                                                    <th>Tình trạng lưu trữ</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -152,18 +152,20 @@
                                                 <%
                                                     for (CustomerDTO cus : cusList) {
                                                 %>
-                                            <form action="CustomerController">
+                                            <form action="CustomerListController">
                                                 <tr>
                                                     <td><%= cus.getFullname()%></td>
                                                     <td><%= cus.getCustomerID()%></td>
                                                     <td><%= cus.getAddress()%></td>
                                                     <td><%= cus.getPhoneNumber()%></td>
-                                                    <td>
-                                                        <input type="hidden" name="customerID" value="<%= cus.getCustomerID()%>"/>
-                                                        <input type="hidden" name="fullname" value="<%= cus.getFullname()%>"/>
-                                                        <input type="hidden" name="address" value="<%= cus.getAddress()%>"/>
-                                                        <input type="hidden" name="phoneNumber" value="<%= cus.getPhoneNumber()%>"/>
-                                                        <input type="submit" name="action" value="Cập nhật" style="border-radius: 10px;padding: 5px;background-color: #f7f70c"/>
+                                                    <td><%= cus.isStatusID()== true ? "Còn lưu" : "Đã xóa"%></td>
+                                                    <td><button style="padding: 5px;background-color: #f7f70c">
+                                                            <a href="CustomerListController?action=update&fullName=<%= cus.getFullname()%>
+                                                               &customerID=<%= cus.getCustomerID()%>
+                                                               &address=<%= cus.getAddress()%>
+                                                               &phoneNumber=<%= cus.getPhoneNumber()%>
+                                                               &statusID=<%= cus.isStatusID()%>">Cập nhật</a>
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             </form>

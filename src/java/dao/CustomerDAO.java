@@ -96,5 +96,33 @@ public class CustomerDAO {
         }
         return null;
     }
+     
+     public int updateCustomer(CustomerDTO customerUpdate) throws SQLException, ClassNotFoundException {
+        int result = 0;
+        try {
+            con = DBConnect.makeConnection();
+            if (con != null) {
+                String sql = "Update tblCustomer SET phoneNumber = ?, address = ?, statusID = ? "
+                        + " WHERE customerID = ?";
+                stm = con.prepareStatement(sql);
+                stm.setInt(1, customerUpdate.getPhoneNumber());
+                stm.setString(2, customerUpdate.getAddress());
+                stm.setBoolean(3, customerUpdate.isStatusID());
+                stm.setString(4, customerUpdate.getCustomerID());
+                result = stm.executeUpdate();
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
     
 }

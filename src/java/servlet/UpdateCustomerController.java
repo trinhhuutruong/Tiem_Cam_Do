@@ -5,7 +5,8 @@
  */
 package servlet;
 
-import dto.ItemDTO;
+import dao.CustomerDAO;
+import dto.CustomerDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,11 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
-public class ItemListController extends HttpServlet {
+public class UpdateCustomerController extends HttpServlet {
 
-    private static final String UPDATE_ITEM = "item_update.jsp";
-    private static final String ERROR = "wrong.html";
-
+    private static final String ERROR = "customer_update.jsp";
+    private static final String SUCCESS = "customerlist.jsp";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,7 +34,6 @@ public class ItemListController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -49,16 +48,25 @@ public class ItemListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
         String url = ERROR;
         try {
             String action = request.getParameter("action");
             if ("update".equals(action)) {
-                url = UPDATE_ITEM;
+                String customerID = request.getParameter("customerID").trim();
+                String fullName = request.getParameter("fullName").trim();
+                int phoneNumber = Integer.parseInt(request.getParameter("phoneNumber").trim());
+                String address = request.getParameter("address").trim();
+                boolean statusID = Boolean.parseBoolean(request.getParameter("statusID").trim());
+                CustomerDAO dao = new CustomerDAO();
+                int updateItem = dao.updateCustomer(new CustomerDTO(customerID, fullName, phoneNumber, address, statusID));
+                if (updateItem > 0) {
+                    url = SUCCESS;
+                }
+                request.getRequestDispatcher(url).forward(request, response);
             }
 
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

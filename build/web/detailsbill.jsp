@@ -85,7 +85,7 @@
             <ul class="metismenu" id="menu">
                 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
                     <!-- Avatar image in top left corner -->
-                    <img src="https://www.w3schools.com/w3images/avatar_smoke.jpg" style="width:100%">
+                    <img src="images/imagesSWP.jpg" style="width:100%">
 
                     <a href="Bill" class="w3-bar-item w3-button w3-padding-large w3-black">
                         <i class="fa fa-file w3-xxlarge"></i>

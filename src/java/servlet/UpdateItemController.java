@@ -35,7 +35,7 @@ public class UpdateItemController extends HttpServlet {
     private static final String UPLOAD_DIR = "images";
     private static final String UPLOAD_FOLDER = "itemPic";
     private static final String ERROR = "item_update.jsp";
-    private static final String SUCCESS = "item-info-list.jsp";
+    private static final String SUCCESS = "itemlist.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -78,30 +78,30 @@ public class UpdateItemController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-//        String url = ERROR;
-//        try {
-//            String action = request.getParameter("action");
-//            if ("update".equals(action)) {
-//                int itemID = Integer.parseInt(request.getParameter("itemID").trim());
-//                String itemName = request.getParameter("itemName").trim();
-//                String itemPic = uploadFile(request);
-//                String customeID = request.getParameter("customeID").trim();
-//                int storeID = Integer.parseInt(request.getParameter("storeID").trim());
-//                Date itemSendingDate = Date.valueOf(request.getParameter("itemSendingDate").trim());
-//                Date itemGettingDate = Date.valueOf(request.getParameter("itemGettingDate").trim());
-//                boolean isStatus = Boolean.parseBoolean(request.getParameter("cmbIsStatus").trim());
-//                boolean isKeep = Boolean.parseBoolean(request.getParameter("cmbIsKeep").trim());
-//                ItemDAO dao = new ItemDAO();
-//                int updateItem = dao.updateItem(new ItemDTO(itemID, itemName, itemPic, customeID, storeID, itemSendingDate, itemGettingDate, isStatus, isKeep));
-//                if (updateItem > 0) {
-//                    url = SUCCESS;
-//                }
-//                request.getRequestDispatcher(url).forward(request, response);
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        String url = ERROR;
+        try {
+            String action = request.getParameter("action");
+            if ("update".equals(action)) {
+                int itemID = Integer.parseInt(request.getParameter("itemID").trim());
+                String itemName = request.getParameter("itemName").trim();
+                String itemPic = uploadFile(request);
+                String customeID = request.getParameter("customeID").trim();
+                int storeID = Integer.parseInt(request.getParameter("storeID").trim());
+                Date itemSendingDate = Date.valueOf(request.getParameter("itemSendingDate").trim());
+                Date itemGettingDate = Date.valueOf(request.getParameter("itemGettingDate").trim());
+                boolean isStatus = Boolean.parseBoolean(request.getParameter("isStatus").trim());
+                boolean isKeep = Boolean.parseBoolean(request.getParameter("isKeep").trim());
+                ItemDAO dao = new ItemDAO();
+                int updateItem = dao.updateItem(new ItemDTO(itemID, itemName, itemPic, customeID, storeID, itemSendingDate, itemGettingDate, isStatus, isKeep));
+                if (updateItem > 0) {
+                    url = SUCCESS;
+                }
+                request.getRequestDispatcher(url).forward(request, response);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -158,8 +158,6 @@ public class UpdateItemController extends HttpServlet {
     }
 
     private String getFileName(Part part) {
-        final String partHeader = part.getHeader("content-disposition");
-        System.out.println("*****partHeader :" + partHeader);
         for (String content : part.getHeader("content-disposition").split(";")) {
             if (content.trim().startsWith("filename")) {
                 return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");

@@ -19,7 +19,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
         <!-- Custom Stylesheet -->
         <link href="./plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
-        
+
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -52,17 +52,17 @@
             <!--**********************************
                 Nav header start
             ***********************************-->
-<!--            <div class="nav-header">
-                <div class="brand-logo">
-                    <a href="index.html">
-                        <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                        <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
-                        <span class="brand-title">
-                            <img src="images/logo-text.png" alt="">
-                        </span>
-                    </a>
-                </div>
-            </div>-->
+            <!--            <div class="nav-header">
+                            <div class="brand-logo">
+                                <a href="index.html">
+                                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
+                                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
+                                    <span class="brand-title">
+                                        <img src="images/logo-text.png" alt="">
+                                    </span>
+                                </a>
+                            </div>
+                        </div>-->
             <!--**********************************
                 Nav header end
             ***********************************-->
@@ -77,14 +77,14 @@
             <!--**********************************
                 Sidebar start
             ***********************************-->
-<!--        <div class="nk-sidebar">           
-            <div class="nk-nav-scroll">-->
-                <ul class="metismenu" id="menu">
-                    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+            <!--        <div class="nk-sidebar">           
+                        <div class="nk-nav-scroll">-->
+            <ul class="metismenu" id="menu">
+                <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
                     <!-- Avatar image in top left corner -->
-                    <img src="https://www.w3schools.com/w3images/avatar_smoke.jpg" style="width:100%">
+                    <img src="images/imagesSWP.jpg" style="width:100%">
 
-                    <a href="Bill" class="w3-bar-item w3-button w3-padding-large w3-black">
+                    <a href="Bill" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
                         <i class="fa fa-file w3-xxlarge"></i>
                         <p>Hóa đơn</p>
                     </a>
@@ -99,14 +99,14 @@
                         <i class="fa fa-dollar w3-xxlarge"></i>
                         <p>Thống kê lợi nhuận</p>
                     </a>
-                    <a href="itemlist.jsp" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+                    <a href="itemlist.jsp" class="w3-bar-item w3-button w3-padding-large w3-black">
                         <i class="fa fa-cart-plus w3-xxlarge"></i>
                         <p>Thông tin món đồ</p>
                     </a>
                 </nav>
-                </ul>
-<!--            </div>
-        </div>-->
+            </ul>
+            <!--            </div>
+                    </div>-->
             <!--**********************************
                 Sidebar end
             ***********************************-->
@@ -148,6 +148,7 @@
                                                     <th>Ảnh món hàng</th>
                                                     <th>Ngày cầm đồ</th>
                                                     <th>Ngày hết hạn cầm đồ</th>
+                                                    <th>Tình trạng trả tiền cho món hàng</th>
                                                     <th>Tình trạng cầm đồ</th>
                                                     <th></th>
                                                 </tr>
@@ -157,15 +158,26 @@
                                                 <%
                                                     for (ItemDTO item : itemList) {
                                                 %>
-                                            <form action="">
+                                            <form action="ItemListController">
                                                 <tr>
                                                     <td><%= item.getItemID()%></td>
                                                     <td><%= item.getItemName()%></td>
-                                                    <td><img src="<%= item.getItemPic()%>" width="220" height="150"/></td>
+                                                    <td><img src="images/itemPic/<%= item.getItemPic()%>" width="220" height="150"/></td>
                                                     <td><%= item.getItemSendingDate()%></td>
                                                     <td><%= item.getItemGettingDate()%></td>
-                                                    <td><%= item.isStatusID()== true ? "Trả" : "Chưa trả"%></td>
-                                                    <td><input type="submit" name="action" value="Cập nhật"/></td>
+                                                    <td><%= item.isStatusID() == true ? "Trả" : "Chưa trả"%></td>
+                                                    <td><%= item.isIsKeep()== true ? "Còn giữ" : "Tịch thu"%></td>
+                                                    <td><button style="padding: 5px;background-color: #f7f70c">
+                                                            <a href="ItemListController?action=update&itemID=<%= item.getItemID()%>
+                                                               &itemName=<%= item.getItemName()%>
+                                                               &itemPic=<%= item.getItemPic()%>
+                                                               &customerID=<%= item.getCustomerID()%>
+                                                               &storeID=<%= item.getStoreID()%>
+                                                               &itemSendingDate=<%= item.getItemSendingDate()%>
+                                                               &itemGettingDate=<%= item.getItemGettingDate()%>
+                                                               &statusID=<%= item.isStatusID()%>
+                                                               &isKeep=<%= item.isIsKeep()%>">Cập nhật</a>
+                                                        </button></td>
                                                 </tr>
                                             </form>
                                             <% } %>

@@ -21,7 +21,7 @@ public class DBConnect {
 
             String sql = "jdbc:sqlserver://localhost:1433;databaseName=Q_ANT";
 
-            Connection con = DriverManager.getConnection(sql, "sa", "1234567890");
+            Connection con = DriverManager.getConnection(sql, "sa", "123456");
             return con;
         } catch (SQLException e){
             e.printStackTrace();
